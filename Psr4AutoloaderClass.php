@@ -1,5 +1,5 @@
 <?php
-namespace config;
+
 
 /**
  * Class Psr4AutoloaderClass
@@ -66,14 +66,12 @@ class Psr4AutoloaderClass
      */
     public function loadClass($class)
     {
-
         // the current namespace prefix
         $prefix = $class;
-
-        var_dump($prefix);
         // work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name
         while (false !== $pos = strrpos($prefix, '\\')) {
+
             // retain the trailing namespace separator in the prefix
             $prefix = substr($class, 0, $pos + 1);
 
@@ -85,7 +83,6 @@ class Psr4AutoloaderClass
             if ($mapped_file) {
                 return $mapped_file;
             }
-
             // remove the trailing namespace separator for the next iteration
             // of strrpos()
             $prefix = rtrim($prefix, '\\');
@@ -110,10 +107,9 @@ class Psr4AutoloaderClass
             return false;
         }
 
+
         // look through base directories for this namespace prefix
         foreach ($this->prefixes[$prefix] as $base_dir) {
-            die('ici2');
-
             // replace the namespace prefix with the base directory,
             // replace namespace separators with directory separators
             // in the relative class name, append with .php

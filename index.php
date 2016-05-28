@@ -6,20 +6,26 @@
  * Time: 16:50
  */
 
-use Model\Entity\User;
+use \Model\Entity\User;
+use \Model\Entity\Proposal;
+use \Model\Dao\UserMapper;
+use \Model\Dao\UserMapperPdo;
+use \Model\Dao\ProposalMapper;
+use \Model\Dao\ProposalMapperPdo;
 
 if (!ini_get('display_errors')) {
     ini_set('display_errors', '1');
 }
-echo ini_get('display_errors');
 
-require 'config/Psr4AutoloaderClass.php';
+require 'Psr4AutoloaderClass.php';
 
-$autoloader = new config\Psr4AutoloaderClass();
-$autoloader->register();
+$loader = new Psr4AutoloaderClass();
+$loader->register();
+$loader->addNamespace('Model\Entity', './Model/Entity');
+$loader->addNamespace('Model\Dao', './Model/Dao');
 
 $user = new User();
-var_dump($user->isNew());die;
+$propsal = new Proposal();
 
 if (isset($_GET['p'])){
     $p = $_GET['p'];
@@ -29,11 +35,11 @@ if (isset($_GET['p'])){
 
 ob_start();
 if ($p === 'home') {
-    require '../views/home.php';
+    require 'views/home.php';
 } elseif ($p === 'single') {
-    require '../views/single.php';
+    require 'views/single.php';
 }
 
 $content = ob_get_clean();
 
-require '../views/templates/default.php';
+require 'views/templates/default.php';

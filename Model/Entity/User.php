@@ -50,7 +50,6 @@ class User
      */
     public function isNew()
     {
-        die('ok');
         return empty($this->id);
     }
 

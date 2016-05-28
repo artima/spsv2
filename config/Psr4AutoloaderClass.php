@@ -1,6 +1,6 @@
 <?php
 
-
+namespace config;
 /**
  * Class Psr4AutoloaderClass
  * @package LibClass

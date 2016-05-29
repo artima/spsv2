@@ -19,8 +19,9 @@ class ProposalMapperPdo extends ProposalMapper
      * @param $db \PDO
      * @return void
      */
-    public function __construct(DatabaseFactory $db)
+    public function __construct()
     {
+        die('propal');
         $this->db = $db->dbConnection();
     }
 
@@ -29,6 +30,7 @@ class ProposalMapperPdo extends ProposalMapper
      */
     public function add(Proposal $proposal)
     {
+        die('winner');
         $requete = $this->db->prepare('INSERT INTO proposal(id, userId, name, createDate, editDate, stage) VALUES("",:userId, :name, NOW(), NULL, :stage)');
         $requete->bindValue(':userId', $proposal->getUser()->getId());
         $requete->bindValue(':name', $proposal->getName());

@@ -6,7 +6,7 @@
  * Time: 12:14
  */
 
-namespace App;
+namespace config;
 
 
 class DatabaseFactory
